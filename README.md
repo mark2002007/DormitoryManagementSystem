@@ -1,1 +1,1 @@
-# dormitory_management_system
+# DormitoryManagementSystem
