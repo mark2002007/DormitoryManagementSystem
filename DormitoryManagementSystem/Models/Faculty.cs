@@ -1,11 +1,8 @@
-using System.Collections.Generic;
+namespace DormitoryManagementSystem.Models;
 
-namespace EFCoreSQLiteDemo
+public class Faculty
 {
-    public class Faculty
-    {
-        public int FacultyID { get; set; }
-        public string FacultyName { get; set; }
-        public ICollection<Room> AssignedRooms { get; set; } = new List<Room>();
-    }
+    public int FacultyID { get; set; }
+    public required string FacultyName { get; set; }
+    public ICollection<Room> AssignedRooms { get; set; } = new List<Room>();
 }

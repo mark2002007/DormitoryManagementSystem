@@ -1,17 +1,15 @@
-using System;
+using DormitoryManagementSystem.Enums;
 
-namespace EFCoreSQLiteDemo
+namespace DormitoryManagementSystem.Models;
+
+public class Room
 {
-    public class Room
-    {
-        public int RoomID { get; set; }
-        public int RoomNumber { get; set; }
-        public int Capacity { get; set; }
-        public ICollection<Resident> Residents { get; set; } = new List<Resident>();
-        public int CurrentOccupancy
-        {
-            get { return Residents?.Count ?? 0; }
-        }
-        public Faculty? AssignedFaculty { get; set; }
-    }
+    public int RoomID { get; set; }
+    public required string RoomNumber { get; set; }
+    public required Dormitory AssignedDormitory { get; set; }
+    public Faculty? AssignedFaculty { get; set; }
+    public required int Capacity { get; set; }
+    public ICollection<Resident> Residents { get; set; } = new List<Resident>();
+    public int CurrentOccupancy => Residents?.Count ?? 0;
+    public Gender? Gender => Residents?.FirstOrDefault()?.Gender;
 }
