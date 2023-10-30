@@ -31,6 +31,16 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
 
     var context = services.GetRequiredService<ApplicationDbContext>();
+    context.Database.EnsureDeleted();
+
+    string dbFilePath = context.Database.GetDbConnection().ConnectionString.Split('=')[1];
+    string shmFilePath = dbFilePath + "-shm";
+    string walFilePath = dbFilePath + "-wal";
+    if (File.Exists(shmFilePath))
+        File.Delete(shmFilePath);
+    if (File.Exists(walFilePath))
+        File.Delete(walFilePath);
+        
     context.Database.EnsureCreated();
     DbInitializer.Initialize(context);
 }

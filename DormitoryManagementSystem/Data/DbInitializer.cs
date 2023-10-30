@@ -10,11 +10,13 @@ public static class DbInitializer
 {
     public static void Initialize(ApplicationDbContext context)
     {
-        if (context.Rooms.Any())
-        {
-            return;   // DB has been seeded
-        } 
-
+        // if (context.Rooms.Any())
+        // {
+        //     return;   // DB has been seeded
+        // } 
+        Console.WriteLine("###################");
+        Console.WriteLine("Seeding . . .");
+        Console.WriteLine("###################");
         // Dormitory
         var dorm2  = new Dormitory(){DormitoryNumber = 2, Location=""};
         var dorm3  = new Dormitory(){DormitoryNumber = 3, Location=""};
@@ -31,8 +33,10 @@ public static class DbInitializer
         context.Dormitories.AddRange(dormitories);
 
         // Faculty
-        var geo_fac        = new Faculty(){FacultyName = "Геологічний факультет"};
-        var eco_fac        = new Faculty(){FacultyName = "Економічний факультет"};
+        var biol_fac       = new Faculty(){FacultyName = "Біологічний факультет"};
+        var geog_fac       = new Faculty(){FacultyName = "Географічний факультет"};
+        var geol_fac       = new Faculty(){FacultyName = "Геологічний факультет"};
+        var econ_fac       = new Faculty(){FacultyName = "Економічний факультет"};
         var comp_fac       = new Faculty(){FacultyName = "Факультет електроніки та комп'ютерних технологій"};
         var jour_fac       = new Faculty(){FacultyName = "Факультет журналістики"};
         var fore_fac       = new Faculty(){FacultyName = "Факультет іноземних мов"};
@@ -46,11 +50,13 @@ public static class DbInitializer
         var philosophy_fac = new Faculty(){FacultyName = "Філософський факультет"};
         var chem_fac       = new Faculty(){FacultyName = "Хімічний факультет"};
         var law_fac        = new Faculty(){FacultyName = "Юридичний факультет"};
-        var pada_fac       = new Faculty(){FacultyName = "Факультет педагогічної освіти"};
+        var peda_fac       = new Faculty(){FacultyName = "Факультет педагогічної освіти"};
         var mana_fac       = new Faculty(){FacultyName = "Факультет управління фінансами та бізнесу"};
         var faculties = new List<Faculty>{
-            geo_fac,    
-            eco_fac,     
+            biol_fac,
+            geog_fac,
+            geol_fac,    
+            econ_fac,     
             comp_fac,      
             jour_fac,     
             fore_fac,     
@@ -64,7 +70,7 @@ public static class DbInitializer
             philosophy_fac,
             chem_fac,      
             law_fac,       
-            pada_fac,      
+            peda_fac,      
             mana_fac,     
             // new Faculty(){FacultyName = "Інститут післядипломної освіти та доуніверситетської підготовки"},
             // new Faculty(){FacultyName = "Педагогічний фаховий коледж"},
@@ -82,12 +88,12 @@ public static class DbInitializer
             //
             ////Геологічний
             //
-            new Room(){RoomNumber =  "1024", AssignedDormitory = dorm2, AssignedFaculty = geo_fac, Capacity = 0},  
+            new Room(){RoomNumber =  "1024", AssignedDormitory = dorm2, AssignedFaculty = geol_fac, Capacity = 0},  
             //
             ////Економічний
             //
-            new Room(){RoomNumber =   "415", AssignedDormitory = dorm2, AssignedFaculty = eco_fac, Capacity = 0},  
-            new Room(){RoomNumber =  "128a", AssignedDormitory = dorm2, AssignedFaculty = eco_fac, Capacity = 0},  
+            new Room(){RoomNumber =   "415", AssignedDormitory = dorm2, AssignedFaculty = econ_fac, Capacity = 0},  
+            new Room(){RoomNumber =  "128a", AssignedDormitory = dorm2, AssignedFaculty = econ_fac, Capacity = 0},  
             //
             ////Історичний
             //
@@ -390,10 +396,381 @@ public static class DbInitializer
             new Room(){RoomNumber =  "301a", AssignedDormitory = dorm2, Capacity = 0}, 
             new Room(){RoomNumber = "1001a", AssignedDormitory = dorm2, Capacity = 0}, 
         };
-        // var dorm3_rooms = new List<Room>{...};
-
+        var dorm6_rooms = new List<Room>{
+            //
+            ////Біологічний
+            //
+            new Room(){RoomNumber =   "701", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "702", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "703", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "705", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "707", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "708", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "709", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "710", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "711", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "712", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "713", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "714", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "721", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "722", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "723", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "724", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "801", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "802", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "803", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "804", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "805", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "806", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "807", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "808", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "809", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "810", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "811", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "812", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "813", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "814", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "816", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "817", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "818", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "819", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "820", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "821", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "822", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "823", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "824", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "825", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "826", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "901", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "902", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "903", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "904", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "905", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "906", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "907", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "908", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "909", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "910", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "911", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "912", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "913", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "914", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "915", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "916", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "917", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "918", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "919", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "920", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "921", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "922", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "923", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "924", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "925", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "926", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =  "701a", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =  "901a", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            new Room(){RoomNumber =  "914a", AssignedDormitory = dorm6, AssignedFaculty=biol_fac, Capacity = 0}, 
+            //
+            ////Іноземних мов
+            //
+            new Room(){RoomNumber =   "101", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "102", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "105", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "106", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "109", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "110", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "111", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "112", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "113", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "114", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "115", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "117", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "118", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "122", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "124", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "201", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "202", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "203", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "204", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "205", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "206", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "207", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "208", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "209", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "210", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "211", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "212", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "213", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "301", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "302", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "303", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "304", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "305", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "306", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "307", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "308", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "309", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "310", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "311", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "312", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "313", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "401", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "402", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "403", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "404", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "405", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "406", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "407", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "408", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "409", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "410", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "411", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "412", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "413", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "506", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "507", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "517", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =   "518", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =  "201a", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =  "301a", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =  "314a", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =  "401a", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            new Room(){RoomNumber =  "414a", AssignedDormitory = dorm6, AssignedFaculty=fore_fac, Capacity = 0}, 
+            //
+            ////Ізолятори
+            //
+            new Room(){RoomNumber =   "103", AssignedDormitory = dorm6, Capacity = 0}, 
+        };
+        var dorm7_rooms = new List<Room>{
+            //
+            ////Ізолятори
+            //
+            new Room(){RoomNumber =   "110", AssignedDormitory = dorm7, Capacity = 0}, 
+            //
+            ////Адміністративні та службові
+            //
+            new Room(){RoomNumber =   "101", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "102", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "103", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "104", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "105", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "106", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "107", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "108", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "109", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "111", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "112", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "113", AssignedDormitory = dorm7, Capacity = 0}, 
+            //
+            ////Для приїжджих
+            //
+            new Room(){RoomNumber =   "211", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "212", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "213", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "214", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "215", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "216", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "217", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "218", AssignedDormitory = dorm7, Capacity = 0}, 
+            new Room(){RoomNumber =   "219", AssignedDormitory = dorm7, Capacity = 0}, 
+        };
+        var dorm8_rooms = new List<Room>{
+            //
+            ////Міжнародні вдносини
+            //
+            new Room(){RoomNumber =   "601", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "602", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "603", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "604", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "605", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "606", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "607", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "608", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "609", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "610", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "611", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "612", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "613", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "614", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "615", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "616", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "617", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "618", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "619", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "620", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "621", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "622", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            new Room(){RoomNumber =   "623", AssignedDormitory = dorm8, AssignedFaculty=frel_fac, Capacity = 0},
+            //
+            ////Юридичний
+            //
+            new Room(){RoomNumber =   "301", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "302", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "303", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "304", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "305", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "306", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "307", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "308", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "309", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "310", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "311", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "313", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "314", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "315", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "316", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "317", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "318", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "319", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "320", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "321", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "322", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            new Room(){RoomNumber =   "323", AssignedDormitory = dorm8, AssignedFaculty=law_fac, Capacity = 0},
+            //
+            ////Педагогічний
+            //
+            new Room(){RoomNumber =   "501", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "502", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "503", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "504", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "505", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "506", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "507", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "508", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "509", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "510", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "511", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "512", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "513", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "514", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "515", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "516", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "517", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "518", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "519", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "520", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "521", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "522", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            new Room(){RoomNumber =   "523", AssignedDormitory = dorm8, AssignedFaculty=peda_fac, Capacity = 0},
+            //
+            ////Ізолятори
+            //
+            new Room(){RoomNumber =   "103", AssignedDormitory = dorm8, Capacity = 0},
+            //
+            ////Адміністративні
+            //
+            new Room(){RoomNumber =   "101", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "102", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "103", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "104", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "105", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "106", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "107", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "108", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "109", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "110", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "224", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "225", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "325", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "424", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "425", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "524", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "525", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "624", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "625", AssignedDormitory = dorm8, Capacity = 0},
+            //
+            ////Для приїжджих
+            //
+            new Room(){RoomNumber =   "212", AssignedDormitory = dorm8, Capacity = 0},
+            new Room(){RoomNumber =   "312", AssignedDormitory = dorm8, Capacity = 0},
+        };
+        var dorm9_rooms = new List<Room>{
+            //
+            ////Ізолятори
+            //
+            new Room(){RoomNumber =   "105", AssignedDormitory = dorm9, Capacity = 0},
+            //
+            ////Для приїжджих
+            //
+            new Room(){RoomNumber =   "101", AssignedDormitory = dorm9, Capacity = 0},
+        };
+        var dorm10_rooms = new List<Room>{
+            //
+            ////Географічний
+            //
+            new Room(){RoomNumber =   "301", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "302", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "303", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "304", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "305", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "306", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "401", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "402", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "403", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "404", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            new Room(){RoomNumber =   "406", AssignedDormitory = dorm10, AssignedFaculty=geog_fac, Capacity = 0},
+            //
+            ////Ізолятори
+            //
+            new Room(){RoomNumber =   "102", AssignedDormitory = dorm10, Capacity = 0},
+        };
+        var dorm11_rooms = new List<Room>{
+            //
+            ////Для Аспірантів
+            //
+            new Room(){RoomNumber =     "1", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "13", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "14", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "15", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "16", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "17", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "18", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "19", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "24", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "34", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =    "35", AssignedDormitory = dorm11, Capacity = 0},
+            //
+            ////Ізолятори
+            //
+            new Room(){RoomNumber =    "78", AssignedDormitory = dorm11, Capacity = 0},
+            //
+            ////Для приїжджих
+            //
+            new Room(){RoomNumber =   "64a", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =   "64б", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =   "68а", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =   "68б", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =   "68в", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =   "70а", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =   "70б", AssignedDormitory = dorm11, Capacity = 0},
+            new Room(){RoomNumber =   "70в", AssignedDormitory = dorm11, Capacity = 0},
+            //
+            ////Для занять студентів
+            //
+            new Room(){RoomNumber =    "47", AssignedDormitory = dorm11, Capacity = 0},
+        };
+        var dorm12_rooms = new List<Room>{
+            //
+            ////Ізолятори
+            //
+            new Room(){RoomNumber =     "6", AssignedDormitory = dorm12, Capacity = 0},
+            //
+            ////Для приїжджих
+            //
+            new Room(){RoomNumber =   "13а", AssignedDormitory = dorm12, Capacity = 0},
+            new Room(){RoomNumber =   "13б", AssignedDormitory = dorm12, Capacity = 0},
+            new Room(){RoomNumber =   "13в", AssignedDormitory = dorm12, Capacity = 0},
+            new Room(){RoomNumber =   "20а", AssignedDormitory = dorm12, Capacity = 0},
+            new Room(){RoomNumber =   "20б", AssignedDormitory = dorm12, Capacity = 0},
+        };
         context.Rooms.AddRange(dorm2_rooms);
-        // context.Rooms.AddRange(dorm3_rooms);
+        context.Rooms.AddRange(dorm6_rooms);
+        context.Rooms.AddRange(dorm7_rooms);
+        context.Rooms.AddRange(dorm8_rooms);
+        context.Rooms.AddRange(dorm9_rooms);
+        context.Rooms.AddRange(dorm10_rooms);
+        context.Rooms.AddRange(dorm11_rooms);
+        context.Rooms.AddRange(dorm12_rooms);
 
         // Resident
         var residents = new List<Resident>{
