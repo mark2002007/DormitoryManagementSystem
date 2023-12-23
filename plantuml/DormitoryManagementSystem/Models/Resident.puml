@@ -1,0 +1,12 @@
+@startuml
+class Resident {
+    + ResidentID : int <<get>> <<set>>
+    + <<required>> FirstName : string <<get>> <<set>>
+    + <<required>> LastName : string <<get>> <<set>>
+    + <<required>> ContactNumber : string <<get>> <<set>>
+    + AssignedRoom : Room? <<get>> <<set>>
+}
+User <|-- Resident
+Resident --> "Gender" Gender
+Resident --> "AssignedFaculty" Faculty
+@enduml

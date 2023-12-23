@@ -5,11 +5,31 @@
 namespace DormitoryManagementSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class _20231030124000_InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Deans",
+                columns: table => new
+                {
+                    DeanID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    Gender = table.Column<int>(type: "INTEGER", nullable: false),
+                    ContactNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    FacultyId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Login = table.Column<string>(type: "TEXT", nullable: false),
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Deans", x => x.DeanID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Dormitories",
                 columns: table => new
@@ -25,16 +45,42 @@ namespace DormitoryManagementSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Rectors",
+                columns: table => new
+                {
+                    RectorID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    Gender = table.Column<int>(type: "INTEGER", nullable: false),
+                    ContactNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    UserID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Login = table.Column<string>(type: "TEXT", nullable: false),
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rectors", x => x.RectorID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Faculties",
                 columns: table => new
                 {
                     FacultyID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FacultyName = table.Column<string>(type: "TEXT", nullable: false)
+                    FacultyName = table.Column<string>(type: "TEXT", nullable: false),
+                    DeanId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Faculties", x => x.FacultyID);
+                    table.ForeignKey(
+                        name: "FK_Faculties_Deans_DeanId",
+                        column: x => x.DeanId,
+                        principalTable: "Deans",
+                        principalColumn: "DeanID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,6 +108,32 @@ namespace DormitoryManagementSystem.Migrations
                         column: x => x.AssignedFacultyFacultyID,
                         principalTable: "Faculties",
                         principalColumn: "FacultyID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Wardens",
+                columns: table => new
+                {
+                    WardenID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    Gender = table.Column<int>(type: "INTEGER", nullable: false),
+                    ContactNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    AssignedDormitoryFacultyID = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Login = table.Column<string>(type: "TEXT", nullable: false),
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wardens", x => x.WardenID);
+                    table.ForeignKey(
+                        name: "FK_Wardens_Faculties_AssignedDormitoryFacultyID",
+                        column: x => x.AssignedDormitoryFacultyID,
+                        principalTable: "Faculties",
+                        principalColumn: "FacultyID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,6 +169,12 @@ namespace DormitoryManagementSystem.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Faculties_DeanId",
+                table: "Faculties",
+                column: "DeanId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Residents_AssignedFacultyFacultyID",
                 table: "Residents",
                 column: "AssignedFacultyFacultyID");
@@ -115,13 +193,24 @@ namespace DormitoryManagementSystem.Migrations
                 name: "IX_Rooms_AssignedFacultyFacultyID",
                 table: "Rooms",
                 column: "AssignedFacultyFacultyID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wardens_AssignedDormitoryFacultyID",
+                table: "Wardens",
+                column: "AssignedDormitoryFacultyID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Rectors");
+
+            migrationBuilder.DropTable(
                 name: "Residents");
+
+            migrationBuilder.DropTable(
+                name: "Wardens");
 
             migrationBuilder.DropTable(
                 name: "Rooms");
@@ -131,6 +220,9 @@ namespace DormitoryManagementSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "Faculties");
+
+            migrationBuilder.DropTable(
+                name: "Deans");
         }
     }
 }

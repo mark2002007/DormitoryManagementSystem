@@ -1,0 +1,4 @@
+@startuml
+class _20231030124000_InitialCreate <<partial>> {
+}
+@enduml

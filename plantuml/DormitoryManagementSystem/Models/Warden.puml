@@ -1,0 +1,11 @@
+@startuml
+class Warden {
+    + WardenID : int <<get>> <<set>>
+    + <<required>> FirstName : string <<get>> <<set>>
+    + <<required>> LastName : string <<get>> <<set>>
+    + <<required>> ContactNumber : string <<get>> <<set>>
+}
+User <|-- Warden
+Warden --> "Gender" Gender
+Warden --> "AssignedDormitory" Faculty
+@enduml

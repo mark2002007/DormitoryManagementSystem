@@ -11,14 +11,54 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DormitoryManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231029173508_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231030104125_20231030124000_InitialCreate")]
+    partial class _20231030124000_InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
+
+            modelBuilder.Entity("DormitoryManagementSystem.Models.Dean", b =>
+                {
+                    b.Property<int>("DeanID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("DeanID");
+
+                    b.ToTable("Deans");
+                });
 
             modelBuilder.Entity("DormitoryManagementSystem.Models.Dormitory", b =>
                 {
@@ -44,13 +84,56 @@ namespace DormitoryManagementSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("DeanId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("FacultyName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("FacultyID");
 
+                    b.HasIndex("DeanId")
+                        .IsUnique();
+
                     b.ToTable("Faculties");
+                });
+
+            modelBuilder.Entity("DormitoryManagementSystem.Models.Rector", b =>
+                {
+                    b.Property<int>("RectorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("RectorID");
+
+                    b.ToTable("Rectors");
                 });
 
             modelBuilder.Entity("DormitoryManagementSystem.Models.Resident", b =>
@@ -128,6 +211,59 @@ namespace DormitoryManagementSystem.Migrations
                     b.ToTable("Rooms");
                 });
 
+            modelBuilder.Entity("DormitoryManagementSystem.Models.Warden", b =>
+                {
+                    b.Property<int>("WardenID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AssignedDormitoryFacultyID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("WardenID");
+
+                    b.HasIndex("AssignedDormitoryFacultyID");
+
+                    b.ToTable("Wardens");
+                });
+
+            modelBuilder.Entity("DormitoryManagementSystem.Models.Faculty", b =>
+                {
+                    b.HasOne("DormitoryManagementSystem.Models.Dean", "Dean")
+                        .WithOne("Faculty")
+                        .HasForeignKey("DormitoryManagementSystem.Models.Faculty", "DeanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dean");
+                });
+
             modelBuilder.Entity("DormitoryManagementSystem.Models.Resident", b =>
                 {
                     b.HasOne("DormitoryManagementSystem.Models.Faculty", "AssignedFaculty")
@@ -160,6 +296,22 @@ namespace DormitoryManagementSystem.Migrations
                     b.Navigation("AssignedDormitory");
 
                     b.Navigation("AssignedFaculty");
+                });
+
+            modelBuilder.Entity("DormitoryManagementSystem.Models.Warden", b =>
+                {
+                    b.HasOne("DormitoryManagementSystem.Models.Faculty", "AssignedDormitory")
+                        .WithMany()
+                        .HasForeignKey("AssignedDormitoryFacultyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AssignedDormitory");
+                });
+
+            modelBuilder.Entity("DormitoryManagementSystem.Models.Dean", b =>
+                {
+                    b.Navigation("Faculty");
                 });
 
             modelBuilder.Entity("DormitoryManagementSystem.Models.Dormitory", b =>

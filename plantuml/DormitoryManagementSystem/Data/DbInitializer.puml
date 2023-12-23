@@ -1,0 +1,5 @@
+@startuml
+class DbInitializer <<static>> {
+    + {static} Initialize(context:ApplicationDbContext) : void
+}
+@enduml

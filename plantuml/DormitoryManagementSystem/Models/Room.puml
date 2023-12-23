@@ -1,0 +1,14 @@
+@startuml
+class Room {
+    + RoomID : int <<get>> <<set>>
+    + <<required>> RoomNumber : string <<get>> <<set>>
+    + AssignedFaculty : Faculty? <<get>> <<set>>
+    + <<required>> Capacity : int <<get>> <<set>>
+    + CurrentOccupancy : int <<get>>
+    + Gender : Gender? <<get>>
+}
+class "ICollection`1"<T> {
+}
+Room --> "AssignedDormitory" Dormitory
+Room o-> "Residents<Resident>" "ICollection`1"
+@enduml

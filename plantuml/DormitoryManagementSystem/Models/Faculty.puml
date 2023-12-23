@@ -1,0 +1,11 @@
+@startuml
+class Faculty {
+    + FacultyID : int <<get>> <<set>>
+    + <<required>> FacultyName : string <<get>> <<set>>
+    + Dean : Dean? <<get>> <<set>>
+    + DeanId : int <<get>> <<set>>
+}
+class "ICollection`1"<T> {
+}
+Faculty o-> "AssignedRooms<Room>" "ICollection`1"
+@enduml

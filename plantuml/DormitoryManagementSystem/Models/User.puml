@@ -1,0 +1,7 @@
+@startuml
+class User {
+    + UserID : int <<get>> <<set>>
+    + <<required>> Login : string <<get>> <<set>>
+    + <<required>> PasswordHash : string <<get>> <<set>>
+}
+@enduml

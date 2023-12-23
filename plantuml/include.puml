@@ -1,0 +1,29 @@
+@startuml
+!include ./DormitoryManagementSystem/Program.puml
+!include ./DormitoryManagementSystem/Migrations/20231030104125_20231030124000_InitialCreate.puml
+!include ./DormitoryManagementSystem/Migrations/ApplicationDbContextModelSnapshot.puml
+!include ./DormitoryManagementSystem/Migrations/20231030104125_20231030124000_InitialCreate.Designer.puml
+!include ./DormitoryManagementSystem/Enums/Gender.puml
+!include ./DormitoryManagementSystem/Models/Resident.puml
+!include ./DormitoryManagementSystem/Models/Dean.puml
+!include ./DormitoryManagementSystem/Models/User.puml
+!include ./DormitoryManagementSystem/Models/Warden.puml
+!include ./DormitoryManagementSystem/Models/Rector.puml
+!include ./DormitoryManagementSystem/Models/Room.puml
+!include ./DormitoryManagementSystem/Models/Faculty.puml
+!include ./DormitoryManagementSystem/Models/Dormitory.puml
+!include ./DormitoryManagementSystem/Data/DbInitializer.puml
+!include ./DormitoryManagementSystem/Data/ApplicationDbContext.puml
+!include ./DormitoryManagementSystem/Pages/Privacy.cshtml.puml
+!include ./DormitoryManagementSystem/Pages/Error.cshtml.puml
+!include ./DormitoryManagementSystem/Pages/Index.cshtml.puml
+!include ./DormitoryManagementSystem/Services/DormitoryService.puml
+!include ./DormitoryManagementSystem/Services/RoomService.puml
+!include ./DormitoryManagementSystem/Services/DeanService.puml
+!include ./DormitoryManagementSystem/Services/RectorService.puml
+!include ./DormitoryManagementSystem/Services/ResidentService.puml
+!include ./DormitoryManagementSystem/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.puml
+!include ./DormitoryManagementSystem/obj/Debug/net7.0/DormitoryManagementSystem.RazorAssemblyInfo.puml
+!include ./DormitoryManagementSystem/obj/Debug/net7.0/DormitoryManagementSystem.AssemblyInfo.puml
+!include ./DormitoryManagementSystem/obj/Debug/net7.0/DormitoryManagementSystem.GlobalUsings.g.puml
+@enduml
